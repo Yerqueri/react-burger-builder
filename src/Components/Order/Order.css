@@ -1,0 +1,11 @@
+.Order{
+    padding:0 20px;
+   text-align: left;
+}
+
+.CardProperties{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 80%;
+    margin-top: 5px;
+}
