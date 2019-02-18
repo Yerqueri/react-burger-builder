@@ -24,6 +24,11 @@ const orderReducer=(state=initialState,action)=>{
                 orders:state.orders.concat(order),
                 purchased:true,
             };
+        case actionTypes.PURCHASE_BURGER_FAIL:
+            return{
+                ...state,
+                loading:false,
+            };
         case actionTypes.FETCH_INGREDIENTS_FAILED:
             return{
                 ...state,

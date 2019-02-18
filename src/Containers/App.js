@@ -7,9 +7,18 @@ import Layout from '../hoc/Layout/Layout'
 import Checkout from './Checkout/Checkout'
 import BurgerBuilder from './BurgerBuilder/BurgerBuilder'
 import Orders from './Orders/Orders'
-import Auth from'../Containers/Auth/Auth'
+import Auth from './Auth/auth'
+import Logout from "./Auth/Logout";
+
+import {connect} from 'react-redux';
+import * as actions from '../store/actionIndex';
 
 class App extends Component {
+
+     // componentDidMount=()=>{
+     //    this.props.onTryAutoSignUp();
+     // };
+
     render() {
         return(
             <div>
@@ -20,6 +29,7 @@ class App extends Component {
                                 <Route path={'/checkout/'} component={Checkout}/>
                                 <Route path={'/orders/'} component={Orders}/>
                                 <Route path={'/Auth/'} component={Auth}/>
+                                <Route path={'/Logout/'} component={Logout}/>
                                 <Route path={'/'} exact component={BurgerBuilder}/>
                             </Switch>
                         </div>
@@ -29,5 +39,11 @@ class App extends Component {
         );
     }
 }
+
+// const mapDispatchToProps=(dispatch)=>{
+//     return{
+//         onTryAutoSignUp:()=>dispatch(actions.authCheckState()),
+//     }
+// };
 
 export default App;

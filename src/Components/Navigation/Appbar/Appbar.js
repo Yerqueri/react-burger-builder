@@ -37,7 +37,7 @@ function ButtonAppBar(props) {
                         <span>Burger Builder</span>
                     </Typography>
                     <nav className={styleClasses.MobileOnly}>
-                        <NavigationItems/>
+                        <NavigationItems isAuthenticated={props.isAuthenticated}/>
                     </nav>
                 </Toolbar>
             </AppBar>

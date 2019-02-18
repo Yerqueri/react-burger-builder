@@ -8,3 +8,15 @@ export{
     purchaseInit,
     fetchOrders,
 } from './Actions/orderAction'
+
+export {
+    auth,
+    authStart,
+    authFailed,
+    authSuccessful,
+    checkAuthTimeOut,
+    logOut,
+    clearError,
+    setAuthRedirectPath,
+    authCheckState,
+}from './Actions/authAction'

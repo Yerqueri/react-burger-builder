@@ -27,7 +27,7 @@ const buildControls=(props)=>{
             ))}
             <br/>
             <Button variant="raised" color="secondary" disabled={!props.purchasable} component="span" onClick={props.ordered} style={{width:200+'px'}}>
-                Checkout&nbsp;&nbsp;<ShoppingCartIcon/>
+                {props.isAuthenticated ? <div>Checkout&nbsp;&nbsp;<ShoppingCartIcon/></div> : <div>Login To Checkout</div>}
             </Button>
         </div>
     );
