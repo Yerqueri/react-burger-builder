@@ -1,1 +1,1 @@
-`the app is deployed at `[](https://react-burger-builder-3bcfe.firebaseapp.com/)`[](url)
+`the app is deployed at [](url)
