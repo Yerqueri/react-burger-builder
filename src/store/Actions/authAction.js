@@ -68,7 +68,7 @@ export const auth=(emailId, password,isSignUp)=>{
                 localStorage.setItem('token',response.data.idToken);
                 localStorage.setItem('expirationDate',expirationDate);
                 localStorage.setItem('userId',response.data.localId);
-                dispatch(authSuccessful(response.data.idToken));
+                dispatch(authSuccessful(response.data.idToken,response.data.localId));
                 dispatch(checkAuthTimeOut(response.data.expiresIn));
             }).catch(error=> {
                     console.log(error);
@@ -97,7 +97,7 @@ export const authCheckState=()=>{
                 dispatch(authSuccessful(token,userId));
             }else{
                 dispatch(logOut());
-                dispatch(checkAuthTimeOut(expirationTime.getSeconds()-new Date().getSeconds()));
+                dispatch(checkAuthTimeOut((expirationTime.getTime()-new Date().getTime())/1000));
             }
 
         }

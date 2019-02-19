@@ -108,20 +108,10 @@ class ContactData extends Component{
             ingredients:this.props.ings,
             price:this.props.price,
             orderData:formData,
+            userId:this.props.userId,
         };
-        console.log("tried to submit");
-        console.log(this.props.token);
+        console.log(order);
         this.props.onPlaceOrder(order,this.props.token);
-        // ()=>this.props.onPlaceOrder(order);
-        // axiosOrder.post('/orders.json',order)
-        //     .then(response=>{
-        //         this.setState({loading:false});
-        //         this.props.history.push('/');
-        //         console.log(response);
-        //     }).catch(error=>{
-        //         this.setState({loading:false});
-        //         console.log(error);
-        // });
     };
 
     checkValidityHandler=(value,rules)=>{
@@ -197,6 +187,7 @@ const mapStateToProps=(state)=>{
         price:state.burgerBuilder.totalPrice,
         loading:state.orderState.loading,
         token:state.auth.token,
+        userId:state.auth.userId,
     }
 };
 

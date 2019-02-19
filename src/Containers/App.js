@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import muitheme from '../Assets/muitheme';
-import {Route,Switch} from 'react-router-dom';
+import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import classes from './App.css';
 import Layout from '../hoc/Layout/Layout'
 import Checkout from './Checkout/Checkout'
@@ -15,23 +15,37 @@ import * as actions from '../store/actionIndex';
 
 class App extends Component {
 
-     // componentDidMount=()=>{
-     //    this.props.onTryAutoSignUp();
-     // };
+    componentDidMount=()=>{
+        this.props.onTryAutoSignUp();
+    };
 
     render() {
+        let routes = (
+            <Switch>
+                <Route path={'/Auth/'} component={Auth}/>
+                <Route path={'/'} exact component={BurgerBuilder}/>
+                <Redirect to={'/'}/>
+            </Switch>
+         );
+
+        if(this.props.isAuthenticated){
+            routes=(
+                <Switch>
+                    <Route path={'/checkout/'} component={Checkout}/>
+                    <Route path={'/orders/'} component={Orders}/>
+                    <Route path={'/Auth/'} component={Auth}/>
+                    <Route path={'/Logout/'} component={Logout}/>
+                    <Route path={'/'} exact component={BurgerBuilder}/>
+                </Switch>
+            );
+        }
+
         return(
             <div>
                 <MuiThemeProvider theme={muitheme}>
                     <Layout>
                         <div className={classes.Burger}>
-                            <Switch>
-                                <Route path={'/checkout/'} component={Checkout}/>
-                                <Route path={'/orders/'} component={Orders}/>
-                                <Route path={'/Auth/'} component={Auth}/>
-                                <Route path={'/Logout/'} component={Logout}/>
-                                <Route path={'/'} exact component={BurgerBuilder}/>
-                            </Switch>
+                            {routes}
                         </div>
                     </Layout>
                 </MuiThemeProvider>
@@ -40,10 +54,16 @@ class App extends Component {
     }
 }
 
-// const mapDispatchToProps=(dispatch)=>{
-//     return{
-//         onTryAutoSignUp:()=>dispatch(actions.authCheckState()),
-//     }
-// };
+const mapStateToProps=(state)=>{
+    return{
+        isAuthenticated:state.auth.token !==null,
+    }
+};
 
-export default App;
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        onTryAutoSignUp:()=>dispatch(actions.authCheckState()),
+    }
+};
+
+export default withRouter( connect(mapStateToProps,mapDispatchToProps)(App));
