@@ -12,7 +12,7 @@ class Orders extends Component{
         this.props.onFetchOrderRequest(this.props.token,this.props.userId);
     };
     render() {
-        console.log(this.props.orders);
+        //console.log(this.props.orders);
         let orderList =this.props.orders.map(order=>(
             <Order
                 key={order.id}

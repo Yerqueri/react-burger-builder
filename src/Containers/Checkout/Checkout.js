@@ -21,7 +21,7 @@ class Checkout extends Component{
     };
 
     render(){
-        console.log(this.props);
+        //console.log(this.props);
         let summary=<Redirect to={"/"}/>;
         let form =(
             <Card raised elevation={10} className={classes.CardProperties}>
