@@ -110,7 +110,7 @@ class ContactData extends Component{
             orderData:formData,
             userId:this.props.userId,
         };
-        console.log(order);
+        //console.log(order);
         this.props.onPlaceOrder(order,this.props.token);
     };
 

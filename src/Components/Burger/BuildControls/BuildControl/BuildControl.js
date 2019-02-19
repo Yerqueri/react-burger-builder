@@ -9,7 +9,7 @@ const buildControl=(props)=>{
         <div className={classes.BuildControl}>
             <div className={classes.Label}>{props.label}</div>
             <Button variant="fab" mini size='medium' color="secondary" aria-label="add" className={classes.button} onClick={props.added}>
-                <AddIcon/>
+                <AddIcon style={{}}/>
             </Button>
             &nbsp;
             <Button variant="fab" mini size='medium' color="default" aria-label="add" className={classes.button} disabled={props.disabled} onClick={props.removed}>
