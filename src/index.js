@@ -10,6 +10,8 @@ import burgerBuildReducer from './store/Reducers/burgerBuildReducer';
 import orderReducer from './store/Reducers/orderReducer';
 import authReducer from './store/Reducers/authReducer';
 import thunk from  'redux-thunk';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import muitheme from './Assets/muitheme';
 
 
 const composeEnhancers = process.env.NODE_ENV ==='development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__: null || compose;
@@ -23,11 +25,13 @@ const store=createStore(rootReducer, composeEnhancers(
 ));
 
 const app =(
-    <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>
+    <MuiThemeProvider theme={muitheme}>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    </MuiThemeProvider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import muitheme from '../Assets/muitheme';
 import {Route,Switch,withRouter,Redirect} from 'react-router-dom';
 import classes from './App.css';
 import Layout from '../hoc/Layout/Layout';
@@ -52,13 +50,11 @@ class App extends Component {
 
         return(
             <div>
-                <MuiThemeProvider theme={muitheme}>
-                    <Layout>
-                        <div className={classes.Burger}>
-                            {routes}
-                        </div>
-                    </Layout>
-                </MuiThemeProvider>
+                <Layout>
+                    <div className={classes.Burger}>
+                        {routes}
+                    </div>
+                </Layout>
             </div>
         );
     }

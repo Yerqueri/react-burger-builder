@@ -10,7 +10,7 @@ const controls=[
     {label:'Bacon',type:'bacon'},
     {label:'Meat',type:'meat'},
     {label:'Cheese',type:'cheese'},
-]
+];
 
 const buildControls=(props)=>{
     return(
